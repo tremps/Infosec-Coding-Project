@@ -1,5 +1,6 @@
 # Infosec-Coding-Project
-Introducting a compiler bug to the TinyCC compiler.
+This project introduces a bug into the TinyCC compiler. This bug targets typicaly safe code and makes it vulnerable.
+The source for the TinyCC compiler can be found at https://github.com/TinyCC/tinycc and is licensed under the GNU Lesser General Public License.
 ## Getting started with our project
 1. In a terminal, cd into the tinycc directory.
 2. Run the following comands:
