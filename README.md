@@ -9,7 +9,7 @@ The source for the TinyCC compiler can be found at https://github.com/TinyCC/tin
 ./configure
 make
 make test
-make install
+sudo make install
 ```
 3. cd into the root directory of the project
 4. Compile with ```tcc -o test.out test.c```
