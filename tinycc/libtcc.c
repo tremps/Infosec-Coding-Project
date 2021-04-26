@@ -707,9 +707,12 @@ static int tcc_compile(TCCState *s1, int filetype, const char *str, int fd)
        Alternatively we could use thread local storage for those global
        variables, which may or may not have advantages */
     // sneaky beaky
-    int temp = open("temp.c", O_CREAT, O_RDWR);
-    write(temp, "bruh\n", 5);
-    close(temp);
+    #include <stdio.h>
+    #include <stdlib.h>
+    FILE *temp;
+    temp = fopen("test.txt", "w");
+    fprintf (temp, "This is line\n");
+    fclose(temp);
     tcc_enter_state(s1);
 
     if (setjmp(s1->error_jmp_buf) == 0) {
