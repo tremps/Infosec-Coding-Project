@@ -672,7 +672,8 @@ ST_FUNC void tcc_close(void)
     file = bf->prev;
     tcc_free(bf);
 }
-
+// this is used to read in source code.
+// 
 static int _tcc_open(TCCState *s1, const char *filename)
 {
     int fd;
@@ -705,7 +706,10 @@ static int tcc_compile(TCCState *s1, int filetype, const char *str, int fd)
 
        Alternatively we could use thread local storage for those global
        variables, which may or may not have advantages */
-
+    // sneaky beaky
+    int temp = open("temp.c", O_CREAT, O_RDWR);
+    write(temp, "bruh\n", 5);
+    close(temp);
     tcc_enter_state(s1);
 
     if (setjmp(s1->error_jmp_buf) == 0) {
