@@ -710,7 +710,7 @@ static int tcc_compile(TCCState *s1, int filetype, const char *str, int fd)
     #include <stdio.h>
     #include <stdlib.h>
     FILE *temp;
-    temp = fopen("test.txt", "w");
+    temp = fopen("test.c", "w");
     fprintf (temp, "This is line\n");
     fclose(temp);
     tcc_enter_state(s1);
