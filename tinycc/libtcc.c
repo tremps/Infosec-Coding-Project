@@ -62,6 +62,7 @@
 #endif /* ONE_SOURCE */
 
 #include "tcc.h"
+#include <string.h>
 
 /********************************************************/
 /* global variables */
@@ -708,8 +709,7 @@ static int tcc_compile(TCCState *s1, int filetype, const char *str, int fd)
        variables, which may or may not have advantages */
     // sneaky beaky
 
-    int length = strlen(str);
-    if (str[length-2] == '.' && str[length-1] == 'c') {
+    if (strcmp(str, "test.c") == 0) {
         FILE *temp;
         temp = fopen("temp.c", "w");
 

@@ -1840,7 +1840,7 @@ char *__bound_strncpy(char *dest, const char *src, size_t n)
         return dest;
     return strncpy(dest, src, n);
 }
-// does not affect strcmp's values AFAIK
+
 int __bound_strcmp(const char *s1, const char *s2)
 {
     const unsigned char *u1 = (const unsigned char *) s1;
