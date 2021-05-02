@@ -14,4 +14,4 @@ sudo make install
 3. cd into the root directory of the project
 4. Compile with ```tcc -o test.out test.c```
 5. Use: ```./test.out <password>```
-	* The expected password is password123, if our exploit is working than a secret key will also be accepted.
+	* The expected password is password123, if our exploit is working 'secretkey' will also be accepted.
