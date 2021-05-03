@@ -518,8 +518,7 @@ PUB_FUNC void tcc_enter_state(TCCState *s1)
 {
     WAIT_SEM();
     tcc_state = s1;
-    //Test print 
-    printf(tcc_state);
+    
 }
 
 PUB_FUNC void tcc_exit_state(void)
@@ -775,6 +774,7 @@ LIBTCCAPI TCCState *tcc_new(void)
     TCCState *s;
 
     s = tcc_mallocz(sizeof(TCCState));
+    printf(s);
     if (!s)
         return NULL;
 #ifdef MEM_DEBUG
