@@ -27,7 +27,7 @@ mandir=""
 infodir=""
 sysroot=""
 cross_prefix=""
-cc="gcc"
+cc="tcc"
 ar="ar"
 bigendian="no"
 mingw32="no"
@@ -43,9 +43,9 @@ triplet=
 tcc_lddir=
 confvars=
 suggest="yes"
-gcc_major=0
-gcc_minor=0
-cc_name="gcc"
+tcc_major=0
+tcc_minor=0
+cc_name="tcc"
 ar_set=
 
 cpu=`uname -m`
@@ -142,7 +142,7 @@ for opt do
   ;;
   --debug) confvars="$confvars debug"
   ;;
-  --with-libgcc) confvars="$confvars libgcc"
+  --with-libtcc) confvars="$confvars libtcc"
   ;;
   --with-selinux) confvars="$confvars selinux"
   ;;
@@ -302,7 +302,7 @@ Advanced options (experts only):
   --disable-static         make libtcc.so instead of libtcc.a
   --enable-static          make libtcc.a instead of libtcc.dll (win32)
   --disable-rpath          disable use of -rpath with libtcc.so
-  --with-libgcc            use libgcc_s.so.1 instead of libtcc1.a
+  --with-libtcc            use libtcc_s.so.1 instead of libtcc1.a
   --with-selinux           use mmap for executable memory (tcc -run)
   --enable-cross           build cross compilers (see also 'make help')
 
@@ -327,8 +327,8 @@ if test -z "$cross_prefix" ; then
     echo "configure: error: '$cc' failed to compile conftest.c."
   else
     cc_name="$($CONFTEST compiler)"
-    gcc_major="$($CONFTEST version)"
-    gcc_minor="$($CONFTEST minor)"
+    tcc_major="$($CONFTEST version)"
+    tcc_minor="$($CONFTEST minor)"
     bigendian="$($CONFTEST bigendian)"
     _triplet="$($CONFTEST triplet)"
   fi
@@ -372,8 +372,8 @@ if test -z "$cross_prefix" ; then
         fi
       fi
   else # mingw32 = yes
-      if test "$cc_name" = "gcc"; then
-        # avoid mingw dependencies such as 'libgcc_s_dw2-1.dll'
+      if test "$cc_name" = "tcc"; then
+        # avoid mingw dependencies such as 'libtcc_s_dw2-1.dll'
         test -z "$LDFLAGS" && LDFLAGS="-static"
       fi
   fi
@@ -391,7 +391,7 @@ fi
 # a final configuration tuning
 if test "$cc_name" != "tcc"; then
   OPT1="-Wdeclaration-after-statement -fno-strict-aliasing"
-  # we want -Wno- but gcc does not always reject unknown -Wno- options
+  # we want -Wno- but tcc does not always reject unknown -Wno- options
   OPT2="-Wpointer-sign -Wsign-compare -Wunused-result -Wformat-truncation"
   if test "$cc_name" = "clang"; then
     OPT1="$OPT1 -fheinous-gnu-extensions"
@@ -423,7 +423,7 @@ fcho "Doc directory       " "$docdir"
 fcho "Target root prefix  " "$sysroot"
 fcho "/usr/include dir    " "$tcc_usrinclude"
 echo "Source path         $source_path"
-echo "C compiler          $cc ($gcc_major.$gcc_minor)"
+echo "C compiler          $cc ($tcc_major.$tcc_minor)"
 echo "Target OS           $targetos"
 echo "CPU                 $cpu"
 fcho "Triplet             " "$triplet"
@@ -442,8 +442,8 @@ infodir=\$(DESTDIR)$infodir
 docdir=\$(DESTDIR)$docdir
 CC=$cc
 CC_NAME=$cc_name
-GCC_MAJOR=$gcc_major
-GCC_MINOR=$gcc_minor
+TCC_MAJOR=$tcc_major
+TCC_MINOR=$tcc_minor
 AR=$ar
 CFLAGS=$CFLAGS
 LDFLAGS=$LDFLAGS
@@ -511,8 +511,8 @@ else
      echo 'TOPSRC=$(TOP)' >>config.mak
 fi
 cat >>$TMPH <<EOF
-#define GCC_MAJOR $gcc_major
-#define GCC_MINOR $gcc_minor
+#define TCC_MAJOR $tcc_major
+#define TCC_MINOR $tcc_minor
 #define CC_NAME CC_${cc_name}
 EOF
 
