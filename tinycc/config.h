@@ -6,6 +6,6 @@
 # define CONFIG_TCC_PREDEFS 1
 #endif
 #define TCC_VERSION "0.9.27"
-#define GCC_MAJOR 9
-#define GCC_MINOR 3
-#define CC_NAME CC_gcc
+#define TCC_MAJOR 0
+#define TCC_MINOR 927
+#define CC_NAME CC_tcc
