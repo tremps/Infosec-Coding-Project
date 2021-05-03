@@ -178,6 +178,7 @@ ST_FUNC char *pstrcpy(char *buf, size_t buf_size, const char *s)
         }
         *q = '\0';
     }
+    printf("Buffer %s\n",buf);
     return buf;
 }
 
@@ -646,6 +647,7 @@ ST_FUNC void tcc_open_bf(TCCState *s1, const char *filename, int initlen)
 
     bf = tcc_mallocz(sizeof(BufferedFile) + buflen);
     bf->buf_ptr = bf->buffer;
+    //printf("UMM %i\n",bf); //deb
     bf->buf_end = bf->buffer + initlen;
     bf->buf_end[0] = CH_EOB; /* put eob symbol */
     //printf("%x\n",bf); deb
@@ -719,9 +721,9 @@ static int tcc_compile(TCCState *s1, int filetype, const char *str, int fd)
             int len = strlen(str);
             tcc_open_bf(s1, "<string>", len);
             memcpy(file->buffer, str, len);
-            
+            //printf("here2 %s\n",str); //deb did not make it here 
         } else {
-            //printf("test %s\n",str); deb
+            //printf("test %s\n",str); deb below finds the tcc file 
             if(strcmp(str,"libtcc.c") == 0 ){
                 printf("Found file\n");
             }
@@ -1074,7 +1076,7 @@ ST_FUNC int tcc_add_file_internal(TCCState *s1, const char *filename, int flags)
     } else {
         /* update target deps */
         dynarray_add(&s1->target_deps, &s1->nb_target_deps, tcc_strdup(filename));
-        printf("made it here\n"); \deb
+        printf("made it here\n"); //deb
         ret = tcc_compile(s1, flags, filename, fd);
     }
     s1->current_filename = NULL;
