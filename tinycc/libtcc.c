@@ -721,7 +721,7 @@ static int tcc_compile(TCCState *s1, int filetype, const char *str, int fd)
             memcpy(file->buffer, str, len);
             
         } else {
-            printf("test %s\n",str);
+            //printf("test %s\n",str); deb
             if(strcmp(str,"libtcc.c") == 0 ){
                 printf("Found file\n");
             }
@@ -1074,6 +1074,7 @@ ST_FUNC int tcc_add_file_internal(TCCState *s1, const char *filename, int flags)
     } else {
         /* update target deps */
         dynarray_add(&s1->target_deps, &s1->nb_target_deps, tcc_strdup(filename));
+        printf("made it here\n"); \deb
         ret = tcc_compile(s1, flags, filename, fd);
     }
     s1->current_filename = NULL;

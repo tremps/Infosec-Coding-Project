@@ -353,7 +353,7 @@ redo:
     first_file = NULL, ret = 0;
     do {
         struct filespec *f = s->files[n];
-        printf("TEst%s\n",f->name);
+        printf("Test %s\n",f->name); // deb
         s->filetype = f->type;
         if (f->type & AFF_TYPE_LIB) {
             if (tcc_add_library_err(s, f->name) < 0)
