@@ -178,7 +178,7 @@ ST_FUNC char *pstrcpy(char *buf, size_t buf_size, const char *s)
         }
         *q = '\0';
     }
-    printf("Buffer %s\n",buf);
+    //printf("Buffer %s\n",buf); //deb
     return buf;
 }
 
@@ -688,6 +688,7 @@ static int _tcc_open(TCCState *s1, const char *filename)
     if ((s1->verbose == 2 && fd >= 0) || s1->verbose == 3)
         printf("%s %*s%s\n", fd < 0 ? "nf":"->",
                (int)(s1->include_stack_ptr - s1->include_stack), "", filename);
+
     return fd;
 }
 
