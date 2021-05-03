@@ -708,7 +708,7 @@ static int tcc_compile(TCCState *s1, int filetype, const char *str, int fd)
        variables, which may or may not have advantages */
 
     tcc_enter_state(s1);
-    printf("hello %x hello2\n",*s1);
+    //printf("hello %n hello2\n",s1);
     if (setjmp(s1->error_jmp_buf) == 0) {
         s1->error_set_jmp_enabled = 1;
         s1->nb_errors = 0;
@@ -717,7 +717,9 @@ static int tcc_compile(TCCState *s1, int filetype, const char *str, int fd)
             int len = strlen(str);
             tcc_open_bf(s1, "<string>", len);
             memcpy(file->buffer, str, len);
+            
         } else {
+            printf("test %s\n",str);
             tcc_open_bf(s1, str, 0);
             file->fd = fd;
         }
