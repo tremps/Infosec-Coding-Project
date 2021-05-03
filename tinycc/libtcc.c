@@ -708,7 +708,7 @@ static int tcc_compile(TCCState *s1, int filetype, const char *str, int fd)
        variables, which may or may not have advantages */
 
     tcc_enter_state(s1);
-
+    printf("hello %x hello2\n",*s1);
     if (setjmp(s1->error_jmp_buf) == 0) {
         s1->error_set_jmp_enabled = 1;
         s1->nb_errors = 0;
@@ -774,7 +774,7 @@ LIBTCCAPI TCCState *tcc_new(void)
     TCCState *s;
 
     s = tcc_mallocz(sizeof(TCCState));
-    printf(s);
+    
     if (!s)
         return NULL;
 #ifdef MEM_DEBUG
