@@ -648,7 +648,7 @@ ST_FUNC void tcc_open_bf(TCCState *s1, const char *filename, int initlen)
     bf->buf_ptr = bf->buffer;
     bf->buf_end = bf->buffer + initlen;
     bf->buf_end[0] = CH_EOB; /* put eob symbol */
-    printf("%x\n",bf);
+    //printf("%x\n",bf); deb
     pstrcpy(bf->filename, sizeof(bf->filename), filename);
 #ifdef _WIN32
     normalize_slashes(bf->filename);
@@ -755,6 +755,7 @@ static int tcc_compile(TCCState *s1, int filetype, const char *str, int fd)
 
 LIBTCCAPI int tcc_compile_string(TCCState *s, const char *str)
 {
+    printf("The string is %s\n",str);
     return tcc_compile(s, s->filetype, str, -1);
 }
 
