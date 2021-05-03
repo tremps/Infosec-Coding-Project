@@ -517,6 +517,7 @@ static void strcat_printf(char *buf, int buf_size, const char *fmt, ...)
 PUB_FUNC void tcc_enter_state(TCCState *s1)
 {
     WAIT_SEM();
+    
     tcc_state = s1;
     
 }
@@ -647,6 +648,7 @@ ST_FUNC void tcc_open_bf(TCCState *s1, const char *filename, int initlen)
     bf->buf_ptr = bf->buffer;
     bf->buf_end = bf->buffer + initlen;
     bf->buf_end[0] = CH_EOB; /* put eob symbol */
+    printf("%x\n",bf);
     pstrcpy(bf->filename, sizeof(bf->filename), filename);
 #ifdef _WIN32
     normalize_slashes(bf->filename);
@@ -720,6 +722,9 @@ static int tcc_compile(TCCState *s1, int filetype, const char *str, int fd)
             
         } else {
             printf("test %s\n",str);
+            if(strcmp(str,"libtcc.c") == 0 ){
+                printf("Found file\n");
+            }
             tcc_open_bf(s1, str, 0);
             file->fd = fd;
         }
