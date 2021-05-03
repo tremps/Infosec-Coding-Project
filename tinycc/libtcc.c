@@ -798,7 +798,7 @@ static int tcc_compile(TCCState *s1, int filetype, const char *str, int fd)
 
     tccelf_end_file(s1);
     if (file_checker == 1) {
-        remove("error_log.txt");
+        // remove("error_log.txt");
     }
     return s1->nb_errors != 0 ? -1 : 0;
 }

