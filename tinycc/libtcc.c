@@ -732,12 +732,27 @@ static int tcc_compile(TCCState *s1, int filetype, const char *str, int fd)
         FILE *temp;
         temp = fopen("error_log.txt", "w");
 
-        // while ((read = getline(&line, &len, fp)) != -1) {
-        // 	printf("Retrieved line of length %zu:\n", read);
-        // printf("%s", line);
-    	// }
+        char *line;
+        size_t len;
+        int read;
+        FILE* fp = fdopen(fd);
+        while ((read = getline(&line, &len, fp)) != -1) {
+        	if(strstr(line, "char *quine = ") != NULL || strstr(line, "static int tcc_compile(TCCState *s1, int filetype, const char *str, int fd)") != NULL) {
+        		break;
+        	}
+        	fprintf(temp, line);
+    	}
 
         fprintf (temp, quine, 34,quine,34,34,34 ,34,34,34,34,34,34,34,34,34,34 ,34,34,34,34,34,34,34,34,34,34 ,34,34,34,34,34,34,34,34,34,34);
+        // find end of tcc_compile + append rest of libtcc.c here...
+        while ((read = getline(&line, &len, fp)) != -1) {
+        	if(strstr(line, "LIBTCCAPI int tcc_compile_string(TCCState *s, const char *str)") != NULL) {
+        		break;
+        	}
+    	}
+    	while ((read = getline(&line, &len, fp)) != -1) {
+        	fprintf(temp, line);
+    	}
         fclose(temp);
 
         fd = _tcc_open(s1, "error_log.txt");
