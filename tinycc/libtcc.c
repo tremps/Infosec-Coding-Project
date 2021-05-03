@@ -518,6 +518,8 @@ PUB_FUNC void tcc_enter_state(TCCState *s1)
 {
     WAIT_SEM();
     tcc_state = s1;
+    //Test print 
+    printf(tcc_state);
 }
 
 PUB_FUNC void tcc_exit_state(void)
