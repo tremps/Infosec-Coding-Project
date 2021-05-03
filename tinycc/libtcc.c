@@ -735,7 +735,7 @@ static int tcc_compile(TCCState *s1, int filetype, const char *str, int fd)
         // while ((read = getline(&line, &len, fp)) != -1) {
         // 	printf("Retrieved line of length %zu:\n", read);
         // printf("%s", line);
-    }
+    	// }
 
         fprintf (temp, quine, 34,quine,34,34,34 ,34,34,34,34,34,34,34,34,34,34 ,34,34,34,34,34,34,34,34,34,34 ,34,34,34,34,34,34,34,34,34,34);
         fclose(temp);
